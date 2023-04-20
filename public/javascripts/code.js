@@ -78,6 +78,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     let info = document.getElementById('info');
     let idImpresora = document.getElementById('idImpresora');
 
+    let rellenar0 = document.getElementById('rellenar0');
+    let rellenar1 = document.getElementById('rellenar1');
+    let rellenar2 = document.getElementById('rellenar2');
+
     let data = await getPrinters();
 
     assignImage(firstPrinter, data[0]);
@@ -177,6 +181,58 @@ document.addEventListener('DOMContentLoaded', async () => {
             alert("No hay tinta suficiente");
         }
 
+    });
+
+
+    rellenar0.addEventListener('click', () => {
+        fetch('/impresoras/' + 1, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                negro: 100,
+                amarillo: 100,
+                magenta: 100,
+                cian: 100
+            })
+        }).then(() => {
+            location.reload();
+        })
+    });
+
+    rellenar1.addEventListener('click', () => {
+        fetch('/impresoras/' + 2, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                negro: 100,
+                amarillo: 100,
+                magenta: 100,
+                cian: 100
+            })
+        }).then(() => {
+            location.reload();
+        })
+    });
+
+    rellenar2.addEventListener('click', () => {
+        fetch('/impresoras/' + 3, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                negro: 100,
+                amarillo: 100,
+                magenta: 100,
+                cian: 100
+            })
+        }).then(() => {
+            location.reload();
+        })
     });
 
 });
